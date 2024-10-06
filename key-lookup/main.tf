@@ -1,9 +1,10 @@
 # Step 1: terraform apply
-#
 # Step 2: terraform apply -var trigger_bug=true 
 #
 # This will show key not being found, but does not give full info about the key that was not found, 
 # item_name is not shown in the error message.
+#
+# Tested with: Terraform v1.5.7 & v1.9.7
 #
 #│ Error: Invalid index
 #│
@@ -21,8 +22,9 @@ terraform {
 }
 
 variable "trigger_bug" {
-  type    = bool
-  default = false
+  type        = bool
+  default     = false
+  description = "Set to true to trigger bug, by adding an element to the list that can't be found in the lookup"
 }
 
 locals {
